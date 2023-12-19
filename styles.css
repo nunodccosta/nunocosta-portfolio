@@ -1,10 +1,16 @@
 /* Fonts */
 @import "/resources/font/stylesheet.css";
 :root {
+  --light-dark: #2a292e;
   --dark-tone: #1d1c21;
   --light-text: #efefef;
   --violet: #8d47fc;
   --fade-background: #2a292e;
+  --blue: #0ec9ec;
+  --neon-blue: #0ec9ec;
+  --lime-green: #d5f25d;
+  --crimson: #a33735;
+  --pink: #b728ac;
   --paragraph: #c9ced3;
 }
 body {
@@ -15,17 +21,21 @@ body {
 *::after,
 *::before {
   font-family: "Mukta Mahee";
+  color: white;
 }
 
 .page-wrapper {
   height: 100dvh;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
-  perspective: 10px;
+  scroll-snap-type: y mandatory;
+}
+.stop-point {
+  scroll-snap-align: start;
 }
 
 .header {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   margin: 40px 96px;
@@ -64,6 +74,7 @@ body {
   text-decoration: none;
 }
 
+/* hero */
 .hero-container {
   position: relative;
   height: 100%;
@@ -71,9 +82,8 @@ body {
 
   display: flex;
   align-items: center;
-
-  transform-style: preserve-3d;
   z-index: -1;
+  margin-top: -172px;
 }
 .hero-text-container {
   position: relative;
@@ -101,6 +111,44 @@ body {
   font-weight: 400;
 }
 
+/* about */
+
+.about-container {
+  margin: 0px 97px;
+  height: 100%;
+  width: calc(100% - 194px);
+  display: flex;
+  align-items: center;
+}
+.about-container .left-container {
+  height: fit-content;
+  width: calc(50% - 97px);
+}
+.about-container .right-container {
+  height: fit-content;
+  width: calc(50% - 97px);
+}
+.about-container .right-container .about-title {
+  font-size: 32px;
+  line-height: 44px;
+  font-weight: 600;
+}
+.about-container .right-container .style-line {
+  display: inline-block;
+  width: 70px;
+  height: 4px;
+  background-color: white;
+}
+
+.about-container .right-container .about-text {
+  margin-top: 60px;
+  color: var(--paragraph);
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 300;
+  max-width: 710px;
+}
+
 .background-top {
   position: absolute;
   top: calc(50dvh - 15%);
@@ -123,4 +171,223 @@ body {
   font-weight: 800;
   color: var(--fade-background);
 }
+.background-bottom {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+/* skills */
 
+.skills-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 0px 98px;
+}
+.skills-container .texture-img {
+  position: absolute;
+  width: 431px;
+  height: 503px;
+  top: -25%;
+  right: 0;
+}
+
+.skill-text {
+  margin-bottom: 60px;
+}
+.skill-text .skill-caption {
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 400;
+  text-align: center;
+  color: var(--violet);
+  text-transform: uppercase;
+}
+.skill-text .skill-title {
+  text-align: center;
+  color: white;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 65px;
+}
+
+.skill-card-container {
+  position: relative;
+  height: 100%;
+  max-height: 708px;
+  width: fit-content;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  gap: 14px;
+  justify-content: center;
+}
+
+.skill-card-container .skill-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 40px;
+
+  width: 565px;
+  height: 220px;
+
+  margin-bottom: 10px;
+
+  border-radius: 10px;
+  backdrop-filter: brightness(80%);
+  background-color: rgba(29, 28, 33, 0.58); /* dark tone but with opacity */
+
+  /* on the brakepoints set a new width to the card or do something about the wrapping so they look more appealing */
+}
+
+.skill-card-container .skill-card .skill-top {
+  display: flex;
+  flex-direction: row;
+}
+.skill-card-container .skill-card .skill-top .skill-img {
+  width: 36px;
+  height: 36px;
+  margin-right: 20px;
+}
+.skill-card-container .skill-card .skill-top .skill-label {
+  text-align: center;
+  color: white;
+  font-size: 34px;
+  line-height: 36px;
+  font-weight: 600;
+}
+.skill-card-container .skill-card .skill-description {
+  text-align: left;
+  color: var(--paragraph);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.message-container {
+  margin: 0px 97px;
+  height: 100%;
+  width: calc(100% - 194px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-container span {
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 0;
+}
+.message-container span.blue {
+  color: var(--blue);
+}
+
+.message-container span.neon-blue {
+  color: var(--neon-blue);
+}
+.message-container span.lime-green {
+  color: var(--lime-green);
+}
+.message-container span.crimson {
+  color: var(--crimson);
+}
+.message-container span.pink {
+  color: var(--pink);
+}
+
+.pre-block span:first-child {
+  margin-left: 1.5em;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  padding: 0px 242px 151px 242px;
+}
+.contact-text {
+  display: flex;
+  flex-direction: column;
+
+  width: 50%;
+}
+.contact-text {
+  padding-right: 160px;
+}
+.contact-text .contact-title {
+  font-size: 90px;
+  font-weight: 700;
+  line-height: 90px;
+  color: var(--violet);
+  margin-bottom: 60px;
+}
+.contact-text .contact-description {
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 300;
+  color: var(--paragraph);
+  margin-bottom: 35px;
+}
+.contact-text .contact-email {
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 700;
+  color: white;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+
+  width: 50%;
+}
+.contact-form form {
+  display: contents;
+}
+.contact-form form input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 36px;
+}
+.contact-form form input:focus {
+  border-color: var(--violet);
+  outline: none;
+}
+.contact-form form textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  height: 40px;
+  margin-bottom: 36px;
+}
+.contact-form form textarea:focus {
+  border-color: var(--violet);
+  outline: none;
+}
+.contact-form button {
+  width: 275px;
+  height: 68px;
+
+  background-color: transparent;
+  border: 2px solid var(--violet);
+  transition: border-color 250ms ease-in-out;
+}
+.contact-form button:hover {
+  border: 2px solid white;
+}
